@@ -1,7 +1,13 @@
 
 const add = (numbers) => {
-    let inputNumbers = numbers || 0
-    return inputNumbers
+    let outputSum = 0;
+    if(numbers !== "") {
+        let splittedNumbers = numbers?.split(',');
+        for(let i = 0; i < splittedNumbers?.length; i++) {
+            outputSum += parseInt(splittedNumbers[i]);
+        }
+    }
+    return outputSum;
 }
 
 export default add;

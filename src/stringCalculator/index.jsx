@@ -4,14 +4,13 @@ import add from './addition';
 const StringCalculator = () => {
 
     const [inputValue, setInputValue] = useState("");
-
+    const [calculatedSum, setCalculatedSum] = useState(0);
     const handleInputChange = (event) => {
         setInputValue(event.target.value)
     }
 
     const handleTrigger = () => {
-        const result = add(inputValue);
-        console.log(result);
+        setCalculatedSum(add(inputValue));
     }
 
     return (
@@ -41,6 +40,10 @@ const StringCalculator = () => {
         >
             Submit
         </Button>
+
+        <Typography variant="h5">
+            Sum of input is: {calculatedSum}
+        </Typography>
         </Box>
     )
 }
