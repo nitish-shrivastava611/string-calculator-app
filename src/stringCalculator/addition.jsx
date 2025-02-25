@@ -4,6 +4,9 @@ const add = (numbers) => {
     if(numbers !== "") {
         let splittedNumbers = numbers?.split(/[,\n\\n]/);
         for(let i = 0; i < splittedNumbers?.length; i++) {
+            if(parseInt(splittedNumbers[i]) < 0) {
+                return `negative numbers not allowed: ${splittedNumbers[i]}`;
+            }
             outputSum += !isNaN(parseInt(splittedNumbers[i]))
                 ? parseInt(splittedNumbers[i])
                 : 0;

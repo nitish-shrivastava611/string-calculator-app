@@ -5,12 +5,20 @@ const StringCalculator = () => {
 
     const [inputValue, setInputValue] = useState("");
     const [calculatedSum, setCalculatedSum] = useState(0);
+    const [errorMessage, setErrorMessage] = useState("");
     const handleInputChange = (event) => {
         setInputValue(event.target.value)
     }
 
     const handleTrigger = () => {
-        setCalculatedSum(add(inputValue));
+        try {
+            let result = add(inputValue)
+            setCalculatedSum(typeof result === 'number' ? result : 0);
+            setErrorMessage("")
+        } catch (error) {
+            setCalculatedSum(0)
+            setErrorMessage(error)
+        }
     }
 
     return (
@@ -43,6 +51,9 @@ const StringCalculator = () => {
 
         <Typography variant="h5">
             Sum of input is: {calculatedSum}
+        </Typography>
+        <Typography variant="h6" style={{color: 'red'}}>
+            {errorMessage}
         </Typography>
         </Box>
     )
