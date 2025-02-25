@@ -24,4 +24,9 @@ describe('StringCalculator Component', () => {
         const result = add("1,2,5")
         expect(result).toBe(8);
     });
+
+    test('For add function with input numbers having new line', () => {
+        const result = add("1\n2,3,4")
+        expect(result).toBe(10);
+    });
 });
