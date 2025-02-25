@@ -31,7 +31,12 @@ describe('StringCalculator Component', () => {
     });
 
     test('For add function to throw error when input numbers having negative value', () => {
-        const result = add("1\n2,3,-4")
-        expect(result).toBe("negative numbers not allowed: -4");
+        const result = () => add("1\n2,3,-4")
+        expect(result).toThrow("negative numbers not allowed: -4");
+    });
+
+    test('For add function to throw error when input having multiple negative values & return all of them', () => {
+        const result = () => add("1\n2,3,-4,5,-7,-2")
+        expect(result).toThrow("negative numbers not allowed: -4,-7,-2");
     });
 });

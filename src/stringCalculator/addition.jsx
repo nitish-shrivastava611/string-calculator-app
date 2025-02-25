@@ -1,18 +1,23 @@
 
 const add = (numbers) => {
     let outputSum = 0;
+    let negativeValues = [];
     if(numbers !== "") {
-        let splittedNumbers = numbers?.split(/[,\n\\n]/);
+        let splittedNumbers = numbers?.split(/[,\n\\n]/); // splitting with both delimiters \n and ,
         for(let i = 0; i < splittedNumbers?.length; i++) {
-            if(parseInt(splittedNumbers[i]) < 0) {
-                return `negative numbers not allowed: ${splittedNumbers[i]}`;
+            if(parseInt(splittedNumbers[i]) < 0) { // checking for all negative values from input
+                negativeValues.push(parseInt(splittedNumbers[i])); //pushing negative values
+            } else {
+                outputSum += !isNaN(parseInt(splittedNumbers[i])) // will check if input is not number, then convert it to 0
+                    ? parseInt(splittedNumbers[i])
+                    : 0;
             }
-            outputSum += !isNaN(parseInt(splittedNumbers[i]))
-                ? parseInt(splittedNumbers[i])
-                : 0;
         }
     }
-    return outputSum;
+    if(negativeValues?.length > 0) { //check for negative values, if exist then throw error
+        throw `negative numbers not allowed: ${negativeValues.join(',')}`;
+    }
+    return outputSum; //retrun sum of all inputs
 }
 
 export default add;
