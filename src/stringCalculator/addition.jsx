@@ -1,4 +1,11 @@
-
+/* Function to addition/Sum all the number provided in input
+    Input: function will accept number devided by delimiter (comma, new line & semi colon)
+    Output: function will return the Sum of all numbers present in input
+    validations: 
+        - It will identify empty input & return 0 (zero)
+        - It will identify non numeric values & convert them to 0 (numeric)
+        - It will identify negative values and throw an error with all the negative values
+*/
 const add = (numbers) => {
     let outputSum = 0;
     let negativeValues = [];
