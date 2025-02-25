@@ -3,7 +3,7 @@ const add = (numbers) => {
     let outputSum = 0;
     let negativeValues = [];
     if(numbers !== "") {
-        let splittedNumbers = numbers?.split(/[,\n\\n]/); // splitting with both delimiters \n and ,
+        let splittedNumbers = numbers?.split(/[,\n\\n;]/); // splitting with both delimiters ,(comma), \n (new line) and ;(semi colon)
         for(let i = 0; i < splittedNumbers?.length; i++) {
             if(parseInt(splittedNumbers[i]) < 0) { // checking for all negative values from input
                 negativeValues.push(parseInt(splittedNumbers[i])); //pushing negative values
