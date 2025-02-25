@@ -19,4 +19,9 @@ describe('StringCalculator Component', () => {
         const result = add("")
         expect(result).toBe(0);
     });
+
+    test('For add function with valid input numbers', () => {
+        const result = add("1,2,5")
+        expect(result).toBe(8);
+    });
 });
