@@ -10,18 +10,13 @@ const add = (numbers) => {
     if(numbers === "") {
         return 0;
     }
-    let outputSum = 0;
-    let negativeNumberArray = [];
-    
     let splittedNumbers = numbers?.split(/[,\n\\n;]/); // splitting with both delimiters ,(comma), \n (new line) and ;(semi colon)
+    let negativeNumberArray = [];
     negativeNumberArray = splittedNumbers?.filter((number) => number < 0);
-
     if(negativeNumberArray?.length > 0) { //check for negative values, if exist then throw error
         throw `negative numbers not allowed: ${negativeNumberArray.join(',')}`;
-    } else {
-        outputSum = sumAllNumbers(splittedNumbers)
     }
-    return outputSum;
+    return sumAllNumbers(splittedNumbers)
 }
 
 const sumAllNumbers = (numbersArray) => {
