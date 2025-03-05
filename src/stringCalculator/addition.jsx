@@ -7,24 +7,29 @@
         - It will identify negative values and throw an error with all the negative values
 */
 const add = (numbers) => {
+    if(numbers === "") {
+        return 0;
+    }
     let outputSum = 0;
-    let negativeValues = [];
-    if(numbers !== "") {
-        let splittedNumbers = numbers?.split(/[,\n\\n;]/); // splitting with both delimiters ,(comma), \n (new line) and ;(semi colon)
-        for(let i = 0; i < splittedNumbers?.length; i++) {
-            if(parseInt(splittedNumbers[i]) < 0) { // checking for all negative values from input
-                negativeValues.push(parseInt(splittedNumbers[i])); //pushing negative values
-            } else {
-                outputSum += !isNaN(parseInt(splittedNumbers[i])) // will check if input is not number, then convert it to 0
-                    ? parseInt(splittedNumbers[i])
-                    : 0;
-            }
-        }
+    let negativeNumberArray = [];
+    
+    let splittedNumbers = numbers?.split(/[,\n\\n;]/); // splitting with both delimiters ,(comma), \n (new line) and ;(semi colon)
+    negativeNumberArray = splittedNumbers?.filter((number) => number < 0);
+
+    if(negativeNumberArray?.length > 0) { //check for negative values, if exist then throw error
+        throw `negative numbers not allowed: ${negativeNumberArray.join(',')}`;
+    } else {
+        outputSum = sumAllNumbers(splittedNumbers)
     }
-    if(negativeValues?.length > 0) { //check for negative values, if exist then throw error
-        throw `negative numbers not allowed: ${negativeValues.join(',')}`;
+    return outputSum;
+}
+
+const sumAllNumbers = (numbersArray) => {
+    let output = 0;
+    for(let i = 0; i < numbersArray?.length; i++) {
+        output += parseInt(numbersArray[i])
     }
-    return outputSum; //retrun sum of all inputs
+    return output;
 }
 
 export default add;
