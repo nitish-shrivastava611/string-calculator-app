@@ -16,15 +16,11 @@ const add = (numbers) => {
     if(negativeNumberArray?.length > 0) { //check for negative values, if exist then throw error
         throw `negative numbers not allowed: ${negativeNumberArray.join(',')}`;
     }
-    return sumAllNumbers(splittedNumbers)
+    return splittedNumbers?.reduce(sumAllNumbers, 0);
 }
 
-const sumAllNumbers = (numbersArray) => {
-    let output = 0;
-    for(let i = 0; i < numbersArray?.length; i++) {
-        output += parseInt(numbersArray[i])
-    }
-    return output;
+const sumAllNumbers = (total, number) => {
+    return total += parseInt(number);
 }
 
 export default add;
